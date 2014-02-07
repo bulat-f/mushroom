@@ -11,22 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207140725) do
+ActiveRecord::Schema.define(version: 20140207163612) do
 
   create_table "users", force: true do |t|
-    t.string   "surname",    limit: 64
-    t.string   "name",       limit: 64
-    t.string   "patronymic", limit: 64
+    t.string   "surname",         limit: 64
+    t.string   "name",            limit: 64
+    t.string   "patronymic",      limit: 64
     t.boolean  "sex"
     t.string   "email"
-    t.string   "phone",      limit: 32
+    t.string   "phone",           limit: 32
     t.decimal  "wallet"
     t.boolean  "tutor"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
