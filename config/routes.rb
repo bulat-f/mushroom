@@ -1,4 +1,8 @@
 MushroomApp::Application.routes.draw do
+  root to: 'static_pages#index'
+  get '/about' => 'static_pages#about'
+  get '/help'  => 'static_pages#help'
+  get '/contact' => 'static_pages#contact'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

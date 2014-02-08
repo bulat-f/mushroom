@@ -6,6 +6,9 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'bootstrap-sass'
+gem 'sass-rails', '~> 4.0.0'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -22,16 +25,11 @@ group :production do
 end
 
 group :assets do
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 4.0.0'
-
   # Use Uglifier as compressor for JavaScript assets
   gem 'uglifier', '>= 1.3.0'
 
   # Use CoffeeScript for .js.coffee assets and views
   gem 'coffee-rails', '~> 4.0.0'
-
-  gem 'bootstrap-sass'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
