@@ -1,11 +1,11 @@
 module ApplicationHelper
 
-  def full_title(str)
-    result = 'Mushroom'
-    unless str.blank?
-      "#{ result } | #{ str }"
+  def full_title(page_title)
+    base_title = 'Mushroom'
+    unless page_title.blank?
+      "#{ base_title } | #{ page_title }"
     else
-      result
+      base_title
     end
   end
 
