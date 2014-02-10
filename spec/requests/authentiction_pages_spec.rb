@@ -31,6 +31,12 @@ describe "AuthentictionPages" do
       it { should_not have_link('Sign in', href: signin_path) }
 
       it { should have_selector('div.alert.alert-success', text: 'Welcome!') }
+
+      describe "following by sign out" do
+        before { click_link "Sign out" }
+
+        it { should have_link('Sign in', href: signin_path) }
+      end
     end
   end
 end
