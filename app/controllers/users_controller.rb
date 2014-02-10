@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_atributes(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "User's atributes are updated"
       redirect_to @user
     else

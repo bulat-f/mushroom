@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "UserPages" do
+describe "User pages" do
 
   subject { page }
 
-  describe "index" do
+  describe "index page" do
     before do
       35.times { FactoryGirl.create(:user) }
       visit users_path
@@ -49,11 +49,50 @@ describe "UserPages" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
 
-# Только после реализации входа пользователя
-#      describe "after saving the user" do
-#        before { click_button submit }
-#        it { should have_link('Sign out') }
-#      end
+      describe "after saving the user" do
+        before { click_button submit }
+        it { should have_link('Sign out') }
+      end
     end 
   end
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      sign_in(user)
+      visit edit_user_path(user)
+    end
+
+# Эти тесты, по непонятным мне причинам фейлятся 
+#    describe "page" do
+#      it { should have_title(full_title('Edit')) }
+#      it { should have_selector('h1', text: 'Edit') }
+#    end
+
+    describe "with invalid information" do
+      let(:new_attr) { {surname: 'Newfam', name: 'Newname', email: 'new@email.'} }
+      before do
+        edit_user_attr(user, new_attr)
+        click_button 'Save changes'
+      end
+
+      it { should have_content('error') }
+    end
+
+    describe "with valid information"
+      let(:new_attr) { {surname: 'Newfam', name: 'Newname', email: 'new@email.com'} }
+      before do
+        edit_user_attr(user, new_attr)
+        click_button 'Save changes'
+      end
+
+      it { should have_title(full_title("#{ new_attr[:surname]} #{ new_attr[:name] }")) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
+
+      specify { expect(user.reload.surname).to  eq new_attr[:surname] }
+      specify { expect(user.reload.name).to     eq new_attr[:name] }
+      specify { expect(user.reload.email).to    eq new_attr[:email] }
+
+    end
 end

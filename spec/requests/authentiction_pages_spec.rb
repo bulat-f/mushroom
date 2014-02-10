@@ -20,7 +20,7 @@ describe "AuthentictionPages" do
 
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before { valid_sign_in(user) }
+      before { sign_in(user) }
 
       it { should have_title(full_title("#{ user.surname } #{ user.name }"))}
       it { should have_link('Users',    href: users_path) }
