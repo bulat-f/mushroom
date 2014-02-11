@@ -41,4 +41,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
+
+  # config.include RSpec::Rails::RequestExampleGroup, type: :request, example_group: {file_path: config.escaped_path(%w[spec (features)])}
 end

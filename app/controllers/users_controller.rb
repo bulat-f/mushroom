@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :signed_in_user, only: [:edit, :update, :index]
+  before_action :correct_user, only:   [:edit, :update]
+
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -47,5 +50,19 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:surname, :name, :patronymic, :sex, :email, :phone, :tutor, :password, :password_confirmation)
+  end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      flash[:info] = 'Please sign in.'
+      redirect_to signin_path
+    end
+  end
+
+  def correct_user
+    unless current_user?(User.find(params[:id]))
+      redirect_to root_path
+    end
   end
 end
