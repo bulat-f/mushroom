@@ -1,6 +1,14 @@
 - name = "#{ @user.surname } #{ @user.name }"
 - provide(:title, name)
-%h1
-  = name
-%h3
-  = @user.email
+.row
+  %aside.col-md-3
+    = gravatar_for(@user)
+    %h1
+      = name
+    %p
+      = @user.email
+    %p
+      = @user.phone
+    -if current_user?(@user)
+      %p
+        = "wallet: #{@user.wallet}" if @user.wallet
