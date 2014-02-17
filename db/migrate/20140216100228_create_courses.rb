@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :title
       t.string :subject
       t.integer :hours
-      t.text :describtion
+      t.text :description
       t.decimal :price
       t.integer :tutor_id
 

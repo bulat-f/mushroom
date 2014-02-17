@@ -16,6 +16,14 @@ def valid_sign_up()
   fill_in "Confirmation", with: "foobartoo"
 end
 
+def valid_course()
+  fill_in "Title",       with: "Basic programing"
+  fill_in "Subject",     with: "programing"
+  fill_in "Hours",       with: "6"
+  fill_in "Description", with: "New course description"
+  fill_in "Price",       with: "100"
+end
+
 def sign_in(user, options = {})
   if options[:no_capybara]
     remember_token = User.new_remember_token

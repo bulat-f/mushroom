@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :course
+  has_many :courses, foreign_key: "tutor_id", dependent: :destroy
 
   has_secure_password
 

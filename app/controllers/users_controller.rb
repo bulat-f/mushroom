@@ -52,17 +52,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:surname, :name, :patronymic, :sex, :email, :phone, :tutor, :password, :password_confirmation)
   end
 
-  def signed_in_user
-    unless signed_in?
-      store_location
-      flash[:info] = 'Please sign in.'
-      redirect_to signin_path
-    end
-  end
-
-  def correct_user
-    unless current_user?(User.find(params[:id]))
-      redirect_to root_path
-    end
-  end
 end

@@ -5,8 +5,10 @@ describe "User pages" do
   subject { page }
 
   describe "index page" do
+    let(:user) { FactoryGirl.create(:user) }
     before do
       35.times { FactoryGirl.create(:user) }
+      sign_in(user)
       visit users_path
     end
 

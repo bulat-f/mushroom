@@ -1,9 +1,14 @@
 MushroomApp::Application.routes.draw do
 
+  get "courses/index"
+  get "courses/new"
+  get "courses/edit"
+  get "courses/show"
   root to: 'static_pages#index'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :courses
 
   get '/about'   => 'static_pages#about'
   get '/help'    => 'static_pages#help'

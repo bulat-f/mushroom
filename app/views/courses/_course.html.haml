@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      = link_to course.title, course
+      %span.label.label-info
+        = course.subject
+  .panel-body
+    = course.description
+  .panel-footer
+    %p
+      = course.hours
+    %p
+      = course.price

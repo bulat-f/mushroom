@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  course_create_btn: Create course
+  course_save_btn: Save course
+  course_create_success: Course successfully saved
+  course_create_warning: Course not saved

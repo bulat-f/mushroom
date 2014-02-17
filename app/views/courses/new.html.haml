@@ -1,0 +1,17 @@
+- provide(:title, 'Create course')
+%h1 Create course
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@course) do |f|
+      = render 'shared/error_messages', object: f.object
+      = f.label :title
+      = f.text_field :title
+      = f.label :subject
+      = f.text_field :subject
+      = f.label :hours
+      = f.text_field :hours
+      = f.label :description
+      = f.text_area :description
+      = f.label :price
+      = f.text_field :price
+      = f.submit t(:course_create_btn), class: "btn btn-lg btn-primary"

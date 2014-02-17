@@ -1,0 +1,20 @@
+- provide(:title, @course.title)
+- tutor = User.find(@course.tutor_id)
+- tutor_name = "#{tutor.surname} #{tutor.name}"
+.page-header
+  %h1
+    = @course.title
+    %small
+      = @course.subject
+.row
+  .col-md-8
+    %p
+      = @course.description
+  .col-md-4
+    %ul.list-group
+      %li.list-group-item
+        = "Ведущий курса: #{link_to tutor_name, tutor}".html_safe
+      %li.list-group-item
+        = "Количесво академических часов: #{@course.hours}"
+      %li.list-group-item
+        = "Цена ак. часа: #{@course.price}"
