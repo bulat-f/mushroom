@@ -9,6 +9,7 @@ MushroomApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses
+  resources :enrollments, only: [:create, :destroy]
 
   get '/about'   => 'static_pages#about'
   get '/help'    => 'static_pages#help'
