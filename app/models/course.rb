@@ -1,6 +1,8 @@
 class Course < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :tutor, class_name: "User"
+  has_many :reverse_enrollments, foreign_key: "learning_course_id", class_name: "Enrollment", dependent: :destroy
+  has_many :users, through: :reverse_enrollments
 
   validates :title, presence: true
   validates :subject, presence: true

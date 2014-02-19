@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
   has_many :courses, foreign_key: "tutor_id", dependent: :destroy
+  has_many :enrollments, dependent: :destroy
+  has_many :learning_courses, through: :enrollments
 
   has_secure_password
 
@@ -16,6 +18,18 @@ class User < ActiveRecord::Base
   validates :phone, presence: true, format: { with: VALID_PHONE_NUM_REGEX }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  def learning_course?(course)
+    self.enrollments.find_by(learning_course_id: course.id)
+  end
+
+  def learn_course!(course)
+    self.enrollments.create!(learning_course_id: course.id)
+  end
+
+  def unsubscribe!(course)
+    self.enrollments.find_by(learning_course_id: course.id).destroy!
+  end
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)

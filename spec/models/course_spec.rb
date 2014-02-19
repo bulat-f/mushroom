@@ -11,4 +11,20 @@ describe Course do
   it { should respond_to(:description) }
   it { should respond_to(:price) }
   it { should respond_to(:tutor_id) }
+  it { should respond_to(:reverse_enrollments) }
+  it { should respond_to(:users) }
+
+  describe "recorded users" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:tutor) { FactoryGirl.create(:tutor) }
+    let(:course) { FactoryGirl.create(:course, tutor_id: tutor.id) }
+    before do
+      user.save
+      user.learn_course!(course)
+    end
+
+    subject { course }
+
+    its(:users) { should include(user) }
+  end
 end

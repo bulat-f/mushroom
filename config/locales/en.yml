@@ -20,7 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  course_create_btn: Create course
-  course_save_btn: Save course
-  course_create_success: Course successfully saved
-  course_create_warning: Course not saved
+  root:
+    title: Mushroom
+    welcome: Welcome to the Mushroom
+  menu:
+    help: Help
+    courses: Courses
+    users: Users
+    account: Account
+    profile: Profile
+    settings: Settings
+    sign_up: Sign up
+    sign_in: Sign in
+    sign_out: Sign out
+  course:
+    view:
+      create_btn: Create course
+      save_btn: Save course
+    flash:
+      save:
+        success: Course successfully saved
+        warning: Course not saved

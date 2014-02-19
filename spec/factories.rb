@@ -15,4 +15,13 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :course do
+    sequence(:title) { |n| "Course number #{n}" }
+    subject "programming"
+    hours 10
+    description "Hello World!!! bla-bla-bla"
+    price 800
+    tutor_id 1  
+  end
 end

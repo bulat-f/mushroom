@@ -20,6 +20,10 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:courses) }
+  it { should respond_to(:enrollments) }
+  it { should respond_to(:learning_courses) }
+  it { should respond_to(:learning_course?) }
+  it { should respond_to(:learn_course!) }
 
   it { should be_valid }
 
@@ -100,7 +104,26 @@ describe User do
 
   describe "remember token" do
     before { @user.save }
-
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "learn" do
+    let(:tutor) { FactoryGirl.create(:tutor) }
+    let(:course) { FactoryGirl.create(:course, tutor_id: tutor.id) }
+    before do
+      @user.save
+      @user.learn_course!(course)
+    end
+
+    it { should be_learning_course(course) }
+    its(:learning_courses) { should include(course) }
+
+    describe "and don't learn" do
+      before { @user.unsubscribe!(course) }
+
+      it { should_not be_learning_course(course) }
+      its(:learning_courses) { should_not include(course) }
+
+    end
   end
 end
