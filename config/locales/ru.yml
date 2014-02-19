@@ -1,5 +1,23 @@
 ru:
-  course_create_btn: Create course
-  course_save_btn: Сохранить изменения
-  course_create_success: Курс успешно сохранен
-  course_create_warning: Курс не сохранен
+  root:
+    title: Mushroom
+    welcome: Welcome to the Mushroom
+  menu:
+    help: Помощь
+    courses: Курсы
+    users: Пользователи
+    account: Аккаунт
+    profile: Профиль
+    settings: Настройки
+    sign_up: Регистрация
+    sign_in: Вход
+    sign_out: Выход
+  course:
+    view:
+      btn:
+        create: Create course
+        save: Save course
+    flash:
+      save:
+        success: Course successfully saved
+        warning: Course not saved

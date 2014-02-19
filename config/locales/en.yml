@@ -35,8 +35,9 @@ en:
     sign_out: Sign out
   course:
     view:
-      create_btn: Create course
-      save_btn: Save course
+      btn:
+        create: Create course
+        save: Save course
     flash:
       save:
         success: Course successfully saved
