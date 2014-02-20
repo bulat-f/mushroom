@@ -42,3 +42,8 @@ en:
       save:
         success: Course successfully saved
         warning: Course not saved
+  enrollment:
+    view:
+      btn:
+        create: Subscribe
+        destroy: Unsubscribe
