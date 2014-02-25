@@ -5,13 +5,20 @@ describe "CoursePages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:tutor) { FactoryGirl.create(:tutor) }
+  let(:course) { FactoryGirl.create(:course, tutor_id: tutor.id) }
+
+  describe "show" do
+    before { visit course_path(course.id) }
+
+    it { should have_title(course.title) }
+  end
 
   describe "new course page" do
 
     describe "signed in user" do
 
       describe "as tutor" do
-        let(:tutor) { FactoryGirl.create(:tutor) }
 
         before do
           sign_in tutor

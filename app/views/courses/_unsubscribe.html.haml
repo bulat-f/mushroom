@@ -1,2 +1,2 @@
 = form_for(current_user.enrollments.find_by(learning_course_id: @course.id), html:   {method: :delete }, remote: true) do |f| 
-  = f.submit I18n.t('enrollment.view.btn.destroy'), class: "btn btn-large btn-warning"
+  = f.submit I18n.t('enrollment.view.btn.destroy'), class: "btn btn-lg btn-warning"

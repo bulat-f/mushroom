@@ -33,6 +33,11 @@ en:
     sign_up: Sign up
     sign_in: Sign in
     sign_out: Sign out
+  user:
+    view:
+      btn:
+        create: Create my account
+        edit: Edit my account
   course:
     view:
       btn:
