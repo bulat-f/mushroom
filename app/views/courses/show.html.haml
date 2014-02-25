@@ -19,4 +19,5 @@
       %li.list-group-item
         = "Цена ак. часа: #{@course.price}"
       %li.list-group-item
-        = render 'subscribe_form'
+        - if signed_in?
+          = render 'subscribe_form'
