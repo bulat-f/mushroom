@@ -6,6 +6,8 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'russian'
+
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 4.0.0'
 
