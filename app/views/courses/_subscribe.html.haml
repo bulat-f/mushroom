@@ -1,0 +1,3 @@
+= form_for(current_user.enrollments.build(learning_course_id: @course.id), remote: true) do |f| 
+  %div= f.hidden_field :learning_course_id
+  = f.submit I18n.t('enrollment.view.btn.create'), class: "btn btn-lg btn-primary"

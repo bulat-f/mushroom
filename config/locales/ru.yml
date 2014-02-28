@@ -21,3 +21,8 @@ ru:
       save:
         success: Course successfully saved
         warning: Course not saved
+  enrollment:
+    view:
+      btn:
+        create: Подать заявку
+        destroy: Отписаться
