@@ -1,13 +1,17 @@
 class User < ActiveRecord::Base
 
   has_many :courses, foreign_key: "tutor_id", dependent: :destroy
+
   has_many :enrollments, dependent: :destroy
   has_many :learning_courses, through: :enrollments
+
+  has_many :remittances, foreign_key: "sender_id", class_name: "Transfer", dependent: :destroy
+  has_many :replenishments, foreign_key: "recipient_id", class_name: "Transfer", dependent: :destroy
 
   has_secure_password
 
   before_save { self.email = email.downcase }
-  before_create :create_remember_token
+  before_create :create_remember_token, :init_wallet
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PHONE_NUM_REGEX = /\+\d{11}/
@@ -43,6 +47,10 @@ class User < ActiveRecord::Base
 
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
+  end
+
+  def init_wallet
+    self.wallet = 0
   end
 
 end

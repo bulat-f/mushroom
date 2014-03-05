@@ -8,5 +8,5 @@ class Course < ActiveRecord::Base
   validates :subject, presence: true
   validates :hours, numericality: { only_integer: true, greater_than: 0 }
   validates :description, presence: true
-  validates :hours, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than: 0 }
 end

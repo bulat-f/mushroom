@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :signed_in_user, only: [:edit, :update, :index]
-  before_action :correct_user, only:   [:edit, :update]
+  before_action :signed_in_user, only: [:edit, :update, :index, :finance]
+  before_action :correct_user, only:   [:edit, :update, :finance]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 
   def destroy
 
+  end
+
+  def finance
+    @user = User.find(params[:id])
   end
 
   private

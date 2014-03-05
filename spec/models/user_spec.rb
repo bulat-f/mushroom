@@ -24,6 +24,8 @@ describe User do
   it { should respond_to(:learning_courses) }
   it { should respond_to(:learning_course?) }
   it { should respond_to(:learn_course!) }
+  it { should respond_to(:remittances) }
+  it { should respond_to(:replenishments) }
 
   it { should be_valid }
 
@@ -126,4 +128,5 @@ describe User do
 
     end
   end
+
 end

@@ -26,7 +26,7 @@ describe "Subscribe pages" do
         expect { click_button "Subscribe" }.to change(user.learning_courses, :count)
       end
     
-      it "haenge enrollment's count" do
+      it "chaenge enrollment's count" do
         expect { click_button "Subscribe" }.to change(Enrollment, :count)
       end
     end
