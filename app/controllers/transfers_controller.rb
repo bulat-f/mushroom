@@ -2,11 +2,25 @@ class TransfersController < ApplicationController
 
   before_action :signed_in_user, only: [:create, :destroy]
 
+  def new
+    @transfer = Transfer.new(sender_id: current_user.id)
+  end
+
   def create
-    @tranfer = Transfer.new(transfer_params)
-    if transfer_params[:sender_id] == current_user.id && @tranfer.save
-      flash[:success] = 'hhhhh'
-      redirect_to root_path
+    @transfer = current_user.remittances.build(transfer_params)
+    @recipient = User.find_by_id(@transfer.recipient_id)
+    current_user.wallet = 0 unless current_user.wallet
+    @recipient.wallet = 0 unless @recipient.wallet
+    current_user.wallet -= @transfer.amount
+    @recipient.wallet += @transfer.amount
+    if @transfer.save
+      current_user.save
+      current_user.update_attribute(:wallet, current_user.wallet)
+      @recipient.update_attribute(:wallet, @recipient.wallet)
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:warning] = 'hhhh'
       redirect_to root_path
@@ -21,6 +35,6 @@ class TransfersController < ApplicationController
   private
 
   def transfer_params
-    params.require(:transfer).permit(:sender_id, :recipient_id, :amount, :message)
+    params.require(:transfer).permit(:recipient_id, :amount, :message)
   end
 end

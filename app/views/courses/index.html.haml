@@ -1,5 +1,7 @@
 - provide(:title, 'All courses')
 %h1 All Courses
+- if signed_in? && current_user.tutor?
+  = link_to "Create new course", new_course_path, class: "btn btn-primary"
 = will_paginate
 = render @courses
 = will_paginate

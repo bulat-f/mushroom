@@ -14,7 +14,7 @@ MushroomApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses
   resources :enrollments, only: [:create, :destroy]
-  resources :transfers,   only: [:create, :destroy]
+  resources :transfers,   only: [:new, :create, :destroy]
 
   get '/about'   => 'static_pages#about'
   get '/help'    => 'static_pages#help'

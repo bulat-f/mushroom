@@ -18,6 +18,5 @@ class EnrollmentsController < ApplicationController
       format.html { redirect_to @course }
       format.js
     end
-    
   end
 end

@@ -22,6 +22,6 @@ FactoryGirl.define do
     hours 10
     description "Hello World!!! bla-bla-bla"
     price 800
-    tutor_id 1  
+    tutor_i:  
   end
 end
